@@ -53,7 +53,7 @@ async function getValidMedia(value, attribute, user) {
 async function getValidSingleComponent(value, attributes, user) {
   const mappedComponent = {};
   for (const attr in attributes) {
-    const element = value[attr];
+    const element = typeof value === 'object' && value !== null && attr in value ? value[attr] : null;
     if (element) {
       let mappedElement = element;
       const { type, model, collection, plugin } = attributes[attr];
